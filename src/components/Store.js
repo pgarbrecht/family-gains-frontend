@@ -2,12 +2,16 @@ import React, { useState } from 'react';
 import '../App.css';
 
 function Store() {
-    const [products, setProducts] = useState([{name: 'product 1 name'},{name: 'product 2 name'}])
+
+    let productList = [
+        {name: 'product 1 name'},
+        {name: 'product 2 name'}
+    ]
+    const [products, setProduct] = useState(productList)
 
     return (
     <>
     <h1>Store</h1>
-    {/* <p>Products: {products}</p> */}
 
     {products.map((product) => {
         return(
@@ -16,6 +20,7 @@ function Store() {
         </>
         )
     })}
+
     </>
     )
 }
