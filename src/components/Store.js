@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../App.css';
 
 // Define baseURL
@@ -17,34 +17,43 @@ function Store() {
     const [products, setProduct] = useState(productList)
 
     //Getting products from the database and updating state
-    // getExercises = () => {
-    //     fetch(baseURL)
+    const getProducts = () => {
+        var headers = {}
+        fetch(baseURL, {
+            method : "GET",
+            mode: 'cors',
+            headers: headers
+        })
 
-    //     .then((res) => {
-    //         if (res.status === 200) {
-    //             return res.json();
-    //         } else {
-    //             return [];
-    //         }
-    //     })
+        .then((res) => {
+            if (res.status === 200) {
+                return res.json();
+            } else {
+                return [];
+            }
+        })
 
-    //     .then((data) => {    
-    //         this.setState({
-    //             // grabbing data from db and updating state when components mount
-    //             customExercises: data.allExercises
-    //         })        
-    //     });
-    // }
+        .then((data) => {    
+            setProduct({
+                // grabbing data from db and updating state when components mount
+                productList: data.allProducts
+            })        
+        });
+    }
+
+    useEffect(() => {
+        getProducts();
+    })
 
     return (
     <>
     <h1>Store</h1>
 
+    {console.log('here is products array: ', products)}
+
     {products.map((product) => {
         return(
-        <>
-            <p>{product.name}</p>
-        </>
+            <p key={product.name} >{product.name}</p>
         )
     })}
 
