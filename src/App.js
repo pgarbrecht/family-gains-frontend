@@ -3,6 +3,7 @@ import './App.css';
 import Home from './components/Home'
 import Store from './components/Store'
 import Contact from './components/Contact'
+import AdminDashboard from './components/AdminDashboard'
 
 // Using React router to allow different URLs
 import {
@@ -25,6 +26,7 @@ function App() {
       <Route path="/" element={<Home/>} />
       <Route path="/store" element={<Store/>} />
       <Route path="/contact" element={<Contact/>} />
+      <Route path="/admin/dashboard" element={<AdminDashboard/>} />
     </Routes>
   </>
   );
