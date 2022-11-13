@@ -7,9 +7,12 @@ const Store = (props) => {
             <>
                 <h1>Store</h1>
                 {props.productList.map((product, index) => {
-                    return(
-                        <p key={index} >{product.name}</p>
-                    )
+                    //only show products in store if they are in stock
+                    if(product.inStock) {
+                        return(
+                            <p key={index} >{product.name}</p>
+                        )
+                    }
                 })}
             </>
         )
