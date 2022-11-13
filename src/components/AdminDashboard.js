@@ -1,12 +1,17 @@
 import React from 'react';
 import '../App.css';
 
-function Contact() {
+const adminDashboard = (props) => {
     return (
-    <>
-    <h1>Admin Dashboard</h1>
+        <>
+        <h1>Products To Manage</h1>
+        {props.productList.map((product, index) => {
+            return(
+                <p key={index} >{product.name}</p>
+            )
+        })}
     </>
     )
 }
   
-export default Contact;
+export default adminDashboard;

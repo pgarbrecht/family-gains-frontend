@@ -30,6 +30,7 @@ class App extends Component {
     };
   }
 
+  //PRODUCT HANDLERS
   //Getting products from the database and updating state
   getProducts = () => {
     var headers = {}
@@ -55,6 +56,14 @@ class App extends Component {
     });
   }
 
+  handleAddProduct = (product) => {
+    const copyProducts = [...this.state.productList.products]
+    copyProducts.unshift(product)
+    this.productList.setState({
+      productList: copyProducts,
+    })
+  }
+
   componentDidMount() {
       this.getProducts();
   }
@@ -75,7 +84,9 @@ class App extends Component {
         productList={this.state.productList}
       />} />
       <Route path="/contact" element={<Contact/>} />
-      <Route path="/admin/dashboard" element={<AdminDashboard/>} />
+      <Route path="/admin/dashboard" element={<AdminDashboard
+        productList={this.state.productList}
+      />} />
     </Routes>
   </>
   );
