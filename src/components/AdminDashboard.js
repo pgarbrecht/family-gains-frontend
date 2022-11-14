@@ -20,16 +20,12 @@ const AdminDashboard = (props) => {
             ...productToAdd,
             [e.target.id]: e.target.value
         })
-        // console.log(productToAdd)
     }
 
-     // handleSubmit method
+    // handleSubmit method
     let handleSubmit = (e) => {
         console.log(productToAdd)
         e.preventDefault()
-        //404 is being caused by the process.env.REACT_APP_BACKEND_URL
-        // fetch(`${process.env.REACT_APP_BACKEND_URL}`, {
-        // FIXED: needed to add /new onto base url in fetch here
         fetch(`${baseURL}/new`, {
             method: 'POST',
             headers: {
@@ -46,34 +42,36 @@ const AdminDashboard = (props) => {
         })
 
         // if we can fetch the data from this route, then proceed
-        // .then (res => { 
-        //     if(res.ok) {
-        //         return res.json()
-        //     }
-        //     throw new Error(res)
-        // })
-
-        //added this version instead to show the error if there is one
-        .then(res => {
-            if(!res.ok) {
-              return res.text().then(text => { throw new Error(text) })
-             }
-            else {
-             return res.json();
-           }    
+        .then (res => { 
+            if(res.ok) {
+                return res.json()
+            }
+            throw new Error(res)
         })
 
-        // .then (resJson => {
-            // setProductToAdd({
-            //     name: '',
-            //     description: '',
-            //     image: '',
-            //     price: '',
-            //     inStock: '',
-            // }) 
-            // window.location.href=`http://localhost:3000/admin/dashboard/`
-        // })
+        .then (resJson => {
+            setProductToAdd({
+                name: '',
+                description: '',
+                image: '',
+                price: '',
+                inStock: '',
+            }) 
+            window.location.href=`http://localhost:3000/admin/dashboard/`
+        })
         .catch(err => (console.log(err)))
+    }
+
+    let handleDeleteProduct = (id) => {
+        fetch(`${baseURL}/${id}`, {
+        method: 'DELETE'
+        }).then( response => {
+        const findIndex = props.productList.findIndex(product => product._id === id)
+        const copyProductList = [...props.productList]
+        copyProductList.splice(findIndex, 1)
+        props.setState({productList: copyProductList})
+        console.log('got to bottom of handle delete');
+        }).then(window.location.href=`http://localhost:3000/admin/dashboard/`)
     }
     
     return (
@@ -134,7 +132,12 @@ const AdminDashboard = (props) => {
         <h2>Manage Existing Products</h2>
         {props.productList.map((product, index) => {
             return(
+                <>
                 <p key={index} >{product.name}</p>
+                <button onClick={()=> {handleDeleteProduct(product._id)}}>
+                    delete
+                </button>
+                </>
             )
         })}
     </>
