@@ -221,7 +221,7 @@ const AdminDashboard = (props) => {
                 >
                     <h2>Edit Product</h2>
                     <button onClick={() => setModalOpen(false)}>Exit</button>
-                    <form onSubmit={handleAddSubmit} >
+                    <form onSubmit={handleEditProduct} >
                         <input
                             id='name'
                             type='text'
