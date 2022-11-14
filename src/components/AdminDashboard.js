@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import '../App.css';
 
+let baseURL = process.env.REACT_APP_BACKEND_URL
+
 const AdminDashboard = (props) => {
 
     // Creating variable for new product, using hook to manage state
@@ -18,12 +20,17 @@ const AdminDashboard = (props) => {
             ...productToAdd,
             [e.target.id]: e.target.value
         })
+        // console.log(productToAdd)
     }
 
      // handleSubmit method
     let handleSubmit = (e) => {
+        console.log(productToAdd)
         e.preventDefault()
-        fetch(`${process.env.REACT_APP_BACKEND_URL}`, {
+        //404 is being caused by the process.env.REACT_APP_BACKEND_URL
+        // fetch(`${process.env.REACT_APP_BACKEND_URL}`, {
+        // FIXED: needed to add /new onto base url in fetch here
+        fetch(`${baseURL}/new`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -35,26 +42,37 @@ const AdminDashboard = (props) => {
                 price: productToAdd.price,
                 inStock: productToAdd.inStock
             }),
+            credentials: 'include',
         })
 
         // if we can fetch the data from this route, then proceed
-        .then (res => { 
-            if(res.ok) {
-                return res.json()
-            }
-            throw new Error(res)
+        // .then (res => { 
+        //     if(res.ok) {
+        //         return res.json()
+        //     }
+        //     throw new Error(res)
+        // })
+
+        //added this version instead to show the error if there is one
+        .then(res => {
+            if(!res.ok) {
+              return res.text().then(text => { throw new Error(text) })
+             }
+            else {
+             return res.json();
+           }    
         })
 
-        .then (resJson => {
-            setProductToAdd({
-                name: '',
-                description: '',
-                image: '',
-                price: '',
-                inStock: '',
-            }) 
-            window.location.href=`http://localhost:3000/admin/dashboard/`
-        })
+        // .then (resJson => {
+            // setProductToAdd({
+            //     name: '',
+            //     description: '',
+            //     image: '',
+            //     price: '',
+            //     inStock: '',
+            // }) 
+            // window.location.href=`http://localhost:3000/admin/dashboard/`
+        // })
         .catch(err => (console.log(err)))
     }
     
@@ -110,7 +128,7 @@ const AdminDashboard = (props) => {
             {/* <input type="checkbox" /> */}
             <input 
                 type='submit'
-                value='Add New Exercise'
+                value='Add New Product'
             />   
         </form>
         <h2>Manage Existing Products</h2>
