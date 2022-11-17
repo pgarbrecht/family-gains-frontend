@@ -3,6 +3,7 @@ import './App.css';
 import Home from './components/Home'
 import Store from './components/Store'
 import Contact from './components/Contact'
+import AdminLogin from './components/AdminLogin'
 import AdminDashboard from './components/AdminDashboard'
 
 // Using React router to allow different URLs
@@ -26,8 +27,24 @@ class App extends Component {
           image: '',
           price: '',
           inStock: ''
-      }]
+      }],
+      admin: {
+        username: '',
+        password: ''
+      }
     };
+  }
+
+  //ADMIN LOGIN HANDLERS
+  updateAdmin = (receivedName, receviedPassword) => {
+    this.setState({
+      admin: {
+      username: receivedName,
+      password: receviedPassword
+      }
+    })
+    console.log('hit updateAdmin')
+    console.log('name and pw are: ', receivedName, receviedPassword)
   }
 
   //PRODUCT HANDLERS
@@ -84,8 +101,13 @@ class App extends Component {
         productList={this.state.productList}
       />} />
       <Route path="/contact" element={<Contact/>} />
+      <Route path="/admin" element={<AdminLogin
+        admin={this.state.admin}
+        updateAdmin={this.updateAdmin}
+      />} />
       <Route path="/admin/dashboard" element={<AdminDashboard
         productList={this.state.productList}
+        admin={this.state.admin}
       />} />
     </Routes>
   </>

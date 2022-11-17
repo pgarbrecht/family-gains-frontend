@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
+import { Navigate } from 'react-router-dom';
 import Modal from "react-modal";
 import '../App.css';
 
 // backend url
-let baseURL = process.env.REACT_APP_BACKEND_URL
+let baseURL = process.env.REACT_APP_BACKEND_URL;
+let adminUsername = process.env.REACT_APP_ADMIN_USERNAME;
+let adminPassword = process.env.REACT_APP_ADMIN_PASSWORD;
 
 // react modal styling
 const customStyles = {
@@ -148,10 +151,16 @@ const AdminDashboard = (props) => {
         console.log('got to bottom of handle delete');
         }).then(window.location.href=`https://family-gains.herokuapp.com/admin/dashboard/`)
     }
-    
-    let sayHello = () => {
-        console.log('hello')
+
+    //is admin is not logged in, send them to login page instead
+    //currently works when hardcoding the username + pw, see why process.env version not working -- try console logging them
+    //rewrite this to say props.admin.name does not match what is in env, same for password
+    if (props.admin.username != adminUsername && props.admin.password != adminPassword) {
+        return <Navigate to="/admin" replace />;
     }
+
+    console.log('here is what we get for env un and pw: ', adminUsername, adminPassword)
+    console.log('here is what we get for env backend url: ', baseURL)
 
     return (
         <>
