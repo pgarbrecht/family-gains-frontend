@@ -33,7 +33,7 @@ const AdminDashboard = (props) => {
         description: '',
         image: '',
         price: '',
-        inStock: true
+        inStock: ''
     })
 
     // Creating variable for product to edit, using hook to manage state
@@ -43,7 +43,7 @@ const AdminDashboard = (props) => {
         description: '',
         image: '',
         price: '',
-        inStock: true
+        inStock: '',
     })
 
     // handle change method for adding a product
@@ -152,15 +152,10 @@ const AdminDashboard = (props) => {
         }).then(window.location.href=`https://family-gains.herokuapp.com/admin/dashboard/`)
     }
 
-    //is admin is not logged in, send them to login page instead
-    //currently works when hardcoding the username + pw, see why process.env version not working -- try console logging them
-    //rewrite this to say props.admin.name does not match what is in env, same for password
+    //if admin is not logged in, send them to login page instead
     if (props.admin.username != adminUsername && props.admin.password != adminPassword) {
         return <Navigate to="/admin" replace />;
     }
-
-    console.log('here is what we get for env un and pw: ', adminUsername, adminPassword)
-    console.log('here is what we get for env backend url: ', baseURL)
 
     return (
         <>
@@ -199,19 +194,16 @@ const AdminDashboard = (props) => {
                 placeholder='Product Price'
             >
             </input>
-            {/* <select
+            <select
                 id='inStock'
-                type='boolean'
+                type='text'
                 onChange={handleAddChange}
                 placeholder='inStock'
             >
-                <option value="none" selected disabled hidden>In Stock?</option> */}
-                {/* <option value='true' type='boolean'>true</option>
-                <option value='false' type='boolean'>false</option> */}
-                {/* <option value='true' type='boolean'>true</option>
-                <option value='false' type='boolean'>false</option> */}
-            {/* </select> */}
-            {/* <input type="checkbox" /> */}
+                <option value="none" selected disabled hidden>In Stock?</option>
+                <option value='yes' type='string'>yes</option>
+                <option value='no' type='string'>no</option>
+            </select>
             <input 
                 type='submit'
                 value='Add New Product'
@@ -263,19 +255,16 @@ const AdminDashboard = (props) => {
                             // placeholder='Product Price'
                         >
                         </input>
-                        {/* <select
+                        <select
                             id='inStock'
-                            type='boolean'
-                            onChange={handleAddChange}
+                            type='text'
+                            onChange={handleEditChange}
                             placeholder='inStock'
                         >
-                            <option value="none" selected disabled hidden>In Stock?</option> */}
-                            {/* <option value='true' type='boolean'>true</option>
-                            <option value='false' type='boolean'>false</option> */}
-                            {/* <option value='true' type='boolean'>true</option>
-                            <option value='false' type='boolean'>false</option> */}
-                        {/* </select> */}
-                        {/* <input type="checkbox" /> */}
+                            <option value="none" selected disabled hidden>In Stock?</option>
+                            <option value='yes' type='text'>yes</option>
+                            <option value='no' type='text'>no</option>
+                         </select>
                         <input 
                             type='submit'
                             value='Submit Edited Product'

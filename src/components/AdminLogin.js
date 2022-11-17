@@ -21,13 +21,10 @@ function AdminLogin(props) {
     // this runs when user submits admin login, if correct, then on redirect they will see the admin dashboard
     const handleAdminSubmit = (e) => {
         e.preventDefault()
-        // console.log('submitted')
-        // console.log(adminInput.name)
         //set admin props equal to the input by calling our higher order function
         props.updateAdmin(adminInput.name, adminInput.password);
-        // // //redirect to admin dashboard using react router
+        // improvement idea: can use local storage to store state, then uncomment below to redirect to admin dashboard 
         // window.location.href=`/admin/dashboard`
-        // return <Navigate to='/contact'  />
     }
 
     return (
