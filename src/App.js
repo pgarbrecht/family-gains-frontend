@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './App.css';
 import Home from './components/Home'
 import Store from './components/Store'
+import Product from './components/Product'
 import Contact from './components/Contact'
 import AdminLogin from './components/AdminLogin'
 import AdminDashboard from './components/AdminDashboard'
@@ -82,6 +83,9 @@ class App extends Component {
     <Routes>
       <Route path="/" element={<Home/>} />
       <Route path="/store" element={<Store
+        productList={this.state.productList}
+      />} />
+      <Route path="/store/:id" element={<Product
         productList={this.state.productList}
       />} />
       <Route path="/contact" element={<Contact/>} />
