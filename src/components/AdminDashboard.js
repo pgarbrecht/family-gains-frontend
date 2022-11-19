@@ -5,8 +5,13 @@ import '../App.css';
 
 // backend url
 let baseURL = process.env.REACT_APP_BACKEND_URL;
-let adminUsername = process.env.REACT_APP_ADMIN_USERNAME;
-let adminPassword = process.env.REACT_APP_ADMIN_PASSWORD;
+
+//the approved admin info stored in secret env file
+let approvedAdminUsername = process.env.REACT_APP_ADMIN_USERNAME;
+let approvedAdminPassword = process.env.REACT_APP_ADMIN_PASSWORD;
+
+//the user's admin info kept in their local storage from last sign in
+let adminPersistentInfo = window.localStorage.getItem('adminPersistentInfo');
 
 // react modal styling
 const customStyles = {
@@ -152,13 +157,32 @@ const AdminDashboard = (props) => {
         }).then(window.location.href=`https://family-gains.herokuapp.com/admin/dashboard/`)
     }
 
-    //if admin is not logged in, send them to login page instead
-    if (props.admin.username != adminUsername && props.admin.password != adminPassword) {
+    // let signOut = () => {
+    //     // delete the admin persistent info from local storage
+    //     window.localStorage.removeItem('adminPersistentInfo');
+    //     // redirect back to sign in page
+    //     window.location.href='http://localhost:3000/admin/'
+    // }
+
+    // LOGIC TO ALLOW VIEWING ADMIN DASHBOARD OR NOT
+    // if admin had signed in, they will have persistent admin info we can access
+    if(adminPersistentInfo){
+        // variables for the username and password in their persistent admin info
+        let username = JSON.parse(adminPersistentInfo).name;
+        let password = JSON.parse(adminPersistentInfo).password;
+            // if their persistent admin username or password do not match approved values, redirect to sign in page
+            if (username != approvedAdminUsername && password != approvedAdminPassword) {
+                 return <Navigate to="/admin" replace />;
+            }
+    // If there is not any admin persistent info, it means they never signed in so also don't get to see admin dashboard, redirect to sign in page
+    } else if(!adminPersistentInfo) {
         return <Navigate to="/admin" replace />;
     }
+    // if the admin had signed in with the correct info, they will get to see the admin dashboard (below)
 
     return (
         <>
+        {/* <button onclick={signOut}>Sign Out</button> */}
         <h1>Admin Dashboard</h1>
         <h2>Add a New Product</h2>
         <form onSubmit={handleAddSubmit} >

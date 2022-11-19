@@ -4,13 +4,13 @@ import '../App.css';
 
 function AdminLogin(props) {
     
-    // 
+    // use state hook to track what user inputs in admin sign in form
     let [adminInput, setAdminInput] = useState({
         name: '',
         password: '',
     })
 
-    // handle change method for adding a product
+    // handle change method for admin sign in form inputs
     let handleAdminChange = (e) => {
         setAdminInput({
             ...adminInput,
@@ -18,13 +18,13 @@ function AdminLogin(props) {
         })
     }
 
-    // this runs when user submits admin login, if correct, then on redirect they will see the admin dashboard
+    // this runs when user submits admin sign in form, if correct, then on redirect they will see the admin dashboard, if not then they will stay on this sign in page
     const handleAdminSubmit = (e) => {
         e.preventDefault()
-        //set admin props equal to the input by calling our higher order function
-        props.updateAdmin(adminInput.name, adminInput.password);
-        // improvement idea: can use local storage to store state, then uncomment below to redirect to admin dashboard 
-        // window.location.href=`/admin/dashboard`
+        //set our admin login info to local storage
+        window.localStorage.setItem('adminPersistentInfo', JSON.stringify(adminInput));
+        // redirect to admin dashboard, and if their login info was correct they will see it
+        window.location.href='https://family-gains.herokuapp.com/admin/dashboard'
     }
 
     return (

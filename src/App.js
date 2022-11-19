@@ -28,23 +28,7 @@ class App extends Component {
           price: '',
           inStock: ''
       }],
-      admin: {
-        username: '',
-        password: ''
-      }
     };
-  }
-
-  //ADMIN LOGIN HANDLERS
-  updateAdmin = (receivedName, receviedPassword) => {
-    this.setState({
-      admin: {
-      username: receivedName,
-      password: receviedPassword
-      }
-    })
-    console.log('hit updateAdmin')
-    console.log('name and pw are: ', receivedName, receviedPassword)
   }
 
   //PRODUCT HANDLERS
@@ -101,10 +85,7 @@ class App extends Component {
         productList={this.state.productList}
       />} />
       <Route path="/contact" element={<Contact/>} />
-      <Route path="/admin" element={<AdminLogin
-        admin={this.state.admin}
-        updateAdmin={this.updateAdmin}
-      />} />
+      <Route path="/admin" element={<AdminLogin />} />
       <Route path="/admin/dashboard" element={<AdminDashboard
         productList={this.state.productList}
         admin={this.state.admin}
