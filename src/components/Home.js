@@ -3,7 +3,7 @@ import '../App.css';
 
 function Home() {
     return (
-    <h1 className="text-4xl font-bold underline">Home</h1>
+    <h1 className="text-3xl p-4 font-bold font-Montserrat ">Resources to Raise Your Family</h1>
     )
 }
   
