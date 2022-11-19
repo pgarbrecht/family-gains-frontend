@@ -8,17 +8,17 @@ function Nav() {
     <nav>
       <div className='flex justify-between items-center p-4 shadow-under'>
         <Link to="/"><img src={Logo} alt='Family Gains Logo' className='h-[30px] pl-4 '></img></Link>
-        <div className='flex justify-evenly'>
-            <Link className='flex items-center nav-links pr-8' to="/store">
-                <span class="material-symbols-outlined" id="nav-icons">
+        <div className='flex justify-evenly pr-4'>
+            <Link className='flex items-center nav-links' to="/store">
+                <span className="material-symbols-outlined" id="nav-icons">
                     storefront
                 </span>
-                <p className='hidden sm:flex'>
+                <p className='hidden sm:flex pr-4'>
                     Store
                 </p>
             </Link>
-            <Link className='flex items-center nav-links pr-8' to="/contact">
-            <span class="material-symbols-outlined" id="nav-icons">
+            <Link className='flex items-center nav-links' to="/contact">
+            <span className="material-symbols-outlined pl-8" id="nav-icons">
                     mail
                 </span>
                 <p className='hidden sm:flex'>
