@@ -157,12 +157,12 @@ const AdminDashboard = (props) => {
         }).then(window.location.href=`https://family-gains.herokuapp.com/admin/dashboard/`)
     }
 
-    // let signOut = () => {
-    //     // delete the admin persistent info from local storage
-    //     window.localStorage.removeItem('adminPersistentInfo');
-    //     // redirect back to sign in page
-    //     window.location.href='http://localhost:3000/admin/'
-    // }
+    let signOut = () => {
+        // delete the admin persistent info from local storage
+        window.localStorage.removeItem('adminPersistentInfo');
+        // redirect back to sign in page
+        window.location.href='https://family-gains.herokuapp.com/admin/'
+    }
 
     // LOGIC TO ALLOW VIEWING ADMIN DASHBOARD OR NOT
     // if admin had signed in, they will have persistent admin info we can access
@@ -182,7 +182,7 @@ const AdminDashboard = (props) => {
 
     return (
         <>
-        {/* <button onclick={signOut}>Sign Out</button> */}
+        <button onClick={signOut}>Sign Out</button>
         <h1>Admin Dashboard</h1>
         <h2>Add a New Product</h2>
         <form onSubmit={handleAddSubmit} >

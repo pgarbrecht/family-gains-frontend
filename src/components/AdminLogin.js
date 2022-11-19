@@ -30,7 +30,7 @@ function AdminLogin(props) {
     return (
     <>
     <h1>Admin Login</h1>
-    <p>To log in, submit your username and password, then click the link below</p>
+    <p>This area is for admins only. To sign in, submit your username and password.</p>
         <form onSubmit={handleAdminSubmit} >
             <input
                 id='name'
@@ -53,7 +53,6 @@ function AdminLogin(props) {
                 value='Submit'
             />   
         </form>
-        <Link to="/admin/dashboard">Log In</Link>
     </>
     )
 }
