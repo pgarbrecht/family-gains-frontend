@@ -8,7 +8,10 @@ module.exports = {
       },
       fontFamily: {
         'body': 'Montserrat'
-      }
+      },
+      colors: {
+        'familygainsred': '#f91e43',
+      },
     },
   },
   plugins: [],
