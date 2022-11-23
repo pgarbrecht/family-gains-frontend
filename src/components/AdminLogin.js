@@ -29,30 +29,39 @@ function AdminLogin(props) {
 
     return (
     <>
-    <h1>Admin Login</h1>
-    <p>This area is for admins only. To log in, submit your username and password.</p>
-        <form onSubmit={handleAdminSubmit} >
-            <input
-                id='name'
-                type='text'
-                value={adminInput.name}
-                onChange={handleAdminChange}
-                placeholder='Admin Username'
-            >
-            </input>
-            <input
-                id='password'
-                type='text'
-                value={adminInput.password}
-                onChange={handleAdminChange}
-                placeholder='Admin Password'
+    <h1 className='text-3xl md:text-4xl text-center pt-12'>Admin Login</h1>
+    <p className='text-lg text-center pt-6 pr-8 pl-8 pb-12'>This area is for admins only. To log in, submit your username and password.</p>
+        <div className='flex justify-center'>
+            <form onSubmit={handleAdminSubmit} className='flex flex-col justify-center items-center border-2 h-[300px] w-[300px] bg-slate-50 rounded-md'>
+                <div className='flex flex-col'>
+                <label htmlFor='name' className='mb-2 font-extrabold'>Username</label>
+                <input
+                    className='border-2  mb-6 w-[250px] pl-2'
+                    id='name'
+                    type='text'
+                    value={adminInput.name}
+                    onChange={handleAdminChange}
+                    placeholder='Username'
                 >
-            </input> 
-            <input 
-                type='submit'
-                value='Submit'
-            />   
-        </form>
+                </input>
+                <label htmlFor='password' className='mb-2 font-extrabold'>Password</label>
+                <input
+                    className='border-2  mb-12 w-[250px] pl-2'
+                    id='password'
+                    type='password'
+                    value={adminInput.password}
+                    onChange={handleAdminChange}
+                    placeholder='Password'
+                    >
+                </input> 
+                <input 
+                    className='rounded-md w-[100px] bg-familygainsred text-white'
+                    type='submit'
+                    value='Submit'
+                />   
+                </div>
+            </form>
+        </div>
     </>
     )
 }
