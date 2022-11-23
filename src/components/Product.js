@@ -11,20 +11,22 @@ function Product(props) {
     );
 
     return(
-        <div>
+        <div className='m-12'>
         <BackToStoreBtn />
+        <div className='flex justify-center items-center mt-12'>
         {props.productList.map((product) => {
             if(product._id === productId) {
                 return(
                     <div key={productId}>
-                        <p>{product.name}</p>
-                        <p>${product.price}</p>
-                        <img src={product.image}></img>
-                        <p>{product.description}</p>
+                        <h1 className='text-center text-3xl md:text-4xl pb-12'>{product.name}</h1>
+                        <img src={product.image} className='sm:w-[400px] sm:h-[400px] pb-12'></img>
+                        <p className='text-center text-3xl md:text-4xl pb-8'>${product.price}</p>
+                        <p className='text-center text-lg md:text-xl pb-16'>{product.description}</p>
                     </div>
                 )
             }
         })}
+        </div>
         </div>
     ) 
 }
