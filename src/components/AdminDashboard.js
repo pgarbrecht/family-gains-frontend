@@ -14,7 +14,7 @@ let approvedAdminPassword = process.env.REACT_APP_ADMIN_PASSWORD;
 let adminPersistentInfo = window.localStorage.getItem('adminPersistentInfo');
 
 // react modal styling
-const customStyles = {
+const modalStyle = {
     content: {
       top: "50%",
       left: "50%",
@@ -23,7 +23,7 @@ const customStyles = {
       marginRight: "-50%",
       transform: "translate(-50%, -50%)",
       backgroundColor: "white",
-      width: 400,
+      width: "75vw",
     },
   };
 
@@ -181,12 +181,19 @@ const AdminDashboard = (props) => {
     // if the admin had signed in with the correct info, they will get to see the admin dashboard (below)
 
     return (
-        <>
-        <button onClick={signOut}>Sign Out</button>
-        <h1>Admin Dashboard</h1>
-        <h2>Add a New Product</h2>
-        <form onSubmit={handleAddSubmit} >
+        <div className='p-12'>
+        <button onClick={signOut}
+        className='border-2 border-familygainsred rounded-md text-familygainsred w-[100px]'
+        >Sign Out</button>
+        <div className='flex flex-col items-center'>
+        <div>
+        <h1 className='text-center text-3xl md:text-4xl pt-8'>Admin Dashboard</h1>
+        <form onSubmit={handleAddSubmit} className='w-[300px] sm:w-[500px]'>
+        <fieldset className='flex flex-col border border-solid border-gray-300 p-3 h-[450px]'>
+        <legend className='text-xl md:text-2xl pt-4'>Add a New Product</legend>
+            <label htmlFor='name' className='font-extrabold'>Product Name</label>
             <input
+                className='border-2  mb-4 w-[275px] sm:w-[475px] pl-2'
                 id='name'
                 type='text'
                 value={productToAdd.name}
@@ -194,7 +201,9 @@ const AdminDashboard = (props) => {
                 placeholder='Product Name'
             >
             </input>
+            <label htmlFor='description' className='font-extrabold'>Product Description</label>
             <input
+                className='border-2  mb-4 w-[275px] sm:w-[475px] pl-2'
                 id='description'
                 type='text'
                 value={productToAdd.description}
@@ -202,7 +211,9 @@ const AdminDashboard = (props) => {
                 placeholder='Product Description'
                 >
             </input> 
+            <label htmlFor='image' className='font-extrabold'>Product Image URL</label>
             <input
+                className='border-2  mb-4 w-[275px] sm:w-[475px] pl-2'
                 id='image'
                 type='text'
                 value={productToAdd.image}
@@ -210,7 +221,9 @@ const AdminDashboard = (props) => {
                 placeholder='Product Image URL'
             >
             </input>
+            <label htmlFor='price' className='font-extrabold'>Product Price</label>
             <input
+                className='border-2  mb-4 w-[275px] sm:w-[475px] pl-2'
                 id='price'
                 type='number'
                 value={productToAdd.notes}
@@ -218,90 +231,109 @@ const AdminDashboard = (props) => {
                 placeholder='Product Price'
             >
             </input>
+            <label htmlFor='inStock' className='font-extrabold'>In Stock?</label>
             <select
+                className='border-2  mb-4 w-[275px] sm:w-[475px] pl-2'
                 id='inStock'
                 type='text'
                 onChange={handleAddChange}
                 placeholder='inStock'
             >
-                <option value="none" selected disabled hidden>In Stock?</option>
+                <option value="none" selected disabled hidden>Choose an option</option>
                 <option value='yes' type='string'>yes</option>
                 <option value='no' type='string'>no</option>
             </select>
             <input 
+                className='mt-1 bg-familygainsred w-[175px] rounded-md text-white'
                 type='submit'
                 value='Add New Product'
             />   
+        </fieldset>
         </form>
-        <h2>Manage Existing Products</h2>
+        <div className='w-[300px] sm:w-[500px]'>
+        <h2 className='text-xl md:text-2xl pt-4 pb-4'>Manage Products</h2>
+        <div className='flex flex-col items-center'>
         {props.productList.map((product, index) => {
             return(
                 <div>
-                <p key={index} >{product.name}</p>
-                <span onClick={() => passExerciseData(product)}><button onClick={setModalOpen}>edit</button></span>
+                <p key={index} className='text-xl '>{product.name}</p>
+                <span onClick={() => passExerciseData(product)}><button onClick={setModalOpen} className='bg-familygainsred pl-2 pr-2 rounded-md text-white mr-4'>Edit</button></span>
                 <Modal
                     isOpen={modalOpen}
                     onRequestClose={() => setModalOpen(false)}
-                    style={customStyles}
+                    style={modalStyle}
                 >
-                    <h2>Edit Product</h2>
-                    <button onClick={() => setModalOpen(false)}>Exit</button>
-                    <form onSubmit={handleEditProduct} >
+                    <div className='flex justify-between'>
+                    <h2 className='text-2xl sm:text-3xl'>Edit Product</h2>
+                    <button onClick={() => setModalOpen(false)} className='bg-familygainsred pr-2 pl-2 rounded-md h-[30px] text-white'>Exit</button>
+                    </div>
+                    <form onSubmit={handleEditProduct} className='flex flex-col'>
+                        <label htmlFor='name' className='font-extrabold'>Product Name</label>
                         <input
+                            className='border-2  mb-2 w-[275px] sm:w-11/12 pl-2'
                             id='name'
                             type='text'
                             value={productToEdit.name}
                             onChange={handleEditChange}
-                            // placeholder={productToEdit.name}
                         >
                         </input>
+                        <label htmlFor='description' className='font-extrabold'>Product Description</label>
                         <input
+                            className='border-2  mb-2 w-[275px] sm:w-11/12 pl-2'
                             id='description'
                             type='text'
                             value={productToEdit.description}
                             onChange={handleEditChange}
-                            // placeholder='Product Description'
                             >
                         </input> 
+                        <label htmlFor='image' className='font-extrabold'>Product Image URL</label>
                         <input
+                            className='border-2  mb-2 w-[275px] sm:w-11/12 pl-2'
                             id='image'
                             type='text'
                             value={productToEdit.image}
                             onChange={handleEditChange}
-                            // placeholder='Product Image URL'
                         >
                         </input>
+                        <label htmlFor='price' className='font-extrabold'>Product Price</label>
                         <input
+                            className='border-2  mb-2 w-[275px] sm:w-11/12 pl-2'
                             id='price'
                             type='number'
                             value={productToEdit.price}
                             onChange={handleEditChange}
-                            // placeholder='Product Price'
                         >
                         </input>
+                        <label htmlFor='inStock' className='font-extrabold'>In Stock?</label>
                         <select
+                            className='border-2  mb-2 w-[275px] sm:w-11/12 pl-2'
                             id='inStock'
                             type='text'
                             onChange={handleEditChange}
-                            placeholder='inStock'
                         >
-                            <option value="none" selected disabled hidden>In Stock?</option>
+                            <option value="none" selected disabled hidden>{productToEdit.inStock}</option>
                             <option value='yes' type='text'>yes</option>
                             <option value='no' type='text'>no</option>
                          </select>
                         <input 
+                            className='mt-1 bg-familygainsred w-[90px] rounded-md text-white'
                             type='submit'
-                            value='Submit Edited Product'
+                            value='Submit'
                         />   
                     </form>
                 </Modal>
-                <button onClick={()=> {handleDeleteProduct(product._id)}}>
-                    delete
+                <button onClick={()=> {handleDeleteProduct(product._id)}} className='bg-familygainsred pl-2 pr-2 rounded-md text-white'>
+                    Delete
                 </button>
+                <hr className='w-[300px] sm:w-[500px] mt-2'></hr>
                 </div>
             )
         })}
-    </>
+        </div>
+        </div>
+    </div>
+    </div>
+    </div>
     )
 }
   
