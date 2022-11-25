@@ -7,7 +7,7 @@ function Nav() {
     return (
     <nav>
       <div className='flex justify-between items-center p-4 shadow-under'>
-        <Link to="/"><img src={Logo} alt='Family Gains Logo' className='h-[30px] pl-4 '></img></Link>
+        <Link to="/"><img src={Logo} alt='Family Gains Logo' className='h-[30px] pl-4 hover:brightness-75'></img></Link>
         <div className='flex justify-evenly pr-4'>
             <Link className='flex items-center nav-links' to="/store">
                 <span className="material-symbols-outlined" id="nav-icons">

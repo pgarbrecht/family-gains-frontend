@@ -55,7 +55,7 @@ function AdminLogin(props) {
                     >
                 </input> 
                 <input 
-                    className='rounded-md w-[100px] bg-familygainsred text-white'
+                    className='rounded-md w-[100px] bg-familygainsred hover:bg-familygainsdarkred text-white cursor-pointer'
                     type='submit'
                     value='Submit'
                 />   

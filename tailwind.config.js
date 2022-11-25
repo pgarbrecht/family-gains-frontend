@@ -11,6 +11,9 @@ module.exports = {
       },
       colors: {
         'familygainsred': '#f91e43',
+        'familygainslightred': '#f77288',
+        'familygainsdarkred': '#b0132e',
+        'familygainsblue': '#5C4AE4',
       },
     },
   },

@@ -183,7 +183,7 @@ const AdminDashboard = (props) => {
     return (
         <div className='p-12'>
         <button onClick={signOut}
-        className='border-2 border-familygainsred rounded-md text-familygainsred w-[100px]'
+        className='border-2 border-familygainsred hover:border-familygainsdarkred rounded-md text-familygainsred hover:text-familygainsdarkred w-[100px]'
         >Sign Out</button>
         <div className='flex flex-col items-center'>
         <div>
@@ -244,7 +244,7 @@ const AdminDashboard = (props) => {
                 <option value='no' type='string'>no</option>
             </select>
             <input 
-                className='mt-1 bg-familygainsred w-[175px] rounded-md text-white'
+                className='mt-1 bg-familygainsred hover:bg-familygainsdarkred w-[175px] rounded-md text-white cursor-pointer'
                 type='submit'
                 value='Add New Product'
             />   
@@ -257,7 +257,7 @@ const AdminDashboard = (props) => {
             return(
                 <div>
                 <p key={index} className='text-xl '>{product.name}</p>
-                <span onClick={() => passExerciseData(product)}><button onClick={setModalOpen} className='bg-familygainsred pl-2 pr-2 rounded-md text-white mr-4'>Edit</button></span>
+                <span onClick={() => passExerciseData(product)}><button onClick={setModalOpen} className='bg-familygainsred hover:bg-familygainsdarkred pl-2 pr-2 rounded-md text-white mr-4'>Edit</button></span>
                 <Modal
                     isOpen={modalOpen}
                     onRequestClose={() => setModalOpen(false)}
@@ -265,7 +265,7 @@ const AdminDashboard = (props) => {
                 >
                     <div className='flex justify-between'>
                     <h2 className='text-2xl sm:text-3xl'>Edit Product</h2>
-                    <button onClick={() => setModalOpen(false)} className='bg-familygainsred pr-2 pl-2 rounded-md h-[30px] text-white'>Exit</button>
+                    <button onClick={() => setModalOpen(false)} className='bg-familygainsred hover:bg-familygainsdarkred pr-2 pl-2 rounded-md h-[30px] text-white'>Exit</button>
                     </div>
                     <form onSubmit={handleEditProduct} className='flex flex-col'>
                         <label htmlFor='name' className='font-extrabold'>Product Name</label>
@@ -316,13 +316,13 @@ const AdminDashboard = (props) => {
                             <option value='no' type='text'>no</option>
                          </select>
                         <input 
-                            className='mt-1 bg-familygainsred w-[90px] rounded-md text-white'
+                            className='mt-1 bg-familygainsred hover:bg-familygainsdarkred w-[90px] rounded-md text-white cursor-pointer'
                             type='submit'
-                            value='Submit'
+                            value='Update'
                         />   
                     </form>
                 </Modal>
-                <button onClick={()=> {handleDeleteProduct(product._id)}} className='bg-familygainsred pl-2 pr-2 rounded-md text-white'>
+                <button onClick={()=> {handleDeleteProduct(product._id)}} className='bg-familygainsred hover:bg-familygainsdarkred pl-2 pr-2 rounded-md text-white'>
                     Delete
                 </button>
                 <hr className='w-[300px] sm:w-[500px] mt-2'></hr>
