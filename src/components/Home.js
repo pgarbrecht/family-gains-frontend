@@ -5,7 +5,7 @@ import '../App.css';
 function Home() {
     return (
     <div className='flex flex-col-reverse md:flex-row h-screen justify-center items-center'>
-        <div className='h-screen md:w-1/2 flex flex-col justify-between sm:justify-evenly items-start p-4 sm:p-16'>
+        <div className='h-screen md:w-1/2 flex flex-col justify-center sm:justify-evenly items-start p-4 sm:p-16'>
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold font-Montserrat ">Resources to Raise Your Family</h1>
             <div className='border-2 border-black w-full rounded-xl'></div>
             <p>Raising a family is hard. We make it a little easier, with our educational activities and content to help your kids build academic skills, life skills, and positive values all while having fun!</p>
