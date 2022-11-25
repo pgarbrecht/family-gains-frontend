@@ -11,7 +11,7 @@ function Home() {
             <p className='mb-4 sm:mb-0 lg:text-xl'>Raising a family is hard. We make it a little easier, with our educational activities and content to help your kids build academic skills, life skills, and positive values all while having fun!</p>
             <button className='mb-4 sm:mb-0 p-4 rounded-full text-white bg-familygainsred hover:bg-familygainsdarkred'><Link to='/store'>View Store</Link></button>
         </div>
-        <img className='h-2/5 md:h-4/5 lg:h-5/5 md:p-16 rounded-full' src='https://i.ibb.co/d5bvggR/homepage-photo.jpg'></img>
+        <img className='mt-6 sm:mt-0 h-2/5 md:h-4/5 lg:h-5/5 md:p-16 rounded-full' src='https://i.ibb.co/d5bvggR/homepage-photo.jpg'></img>
     </div>
     )
 }
