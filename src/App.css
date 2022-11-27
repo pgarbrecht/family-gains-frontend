@@ -49,3 +49,9 @@ h1 {
     background-color: white;
     width: 75vw;
 }
+
+@media screen and (max-height: 450px) {
+  #home-image{
+    display: none;
+  }
+}

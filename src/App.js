@@ -12,13 +12,12 @@ import AdminDashboard from './components/AdminDashboard'
 import {
   Routes,
   Route,
-  Link,
 } from "react-router-dom";
 
 // Define baseURL
 let baseURL = process.env.REACT_APP_BACKEND_URL
 
-//Note it is intentional to use class component here instead of function component + useState hook, because of issues with converting data from back end
+// Note it is intentional to use class component here instead of function component + useState hook, because of issues with converting data from back end
 class App extends Component {
   constructor(props) {
 		super(props);
@@ -33,8 +32,8 @@ class App extends Component {
     };
   }
 
-  //PRODUCT HANDLERS
-  //Getting products from the database and updating state
+  // PRODUCT HANDLERS
+  // Getting products from the database and updating state
   getProducts = () => {
     var headers = {}
     fetch(baseURL, {
@@ -53,12 +52,13 @@ class App extends Component {
 
     .then((data) => {    
         this.setState({
-            // grabbing data from db and updating state when components mount
+            // Grabbing data from db and updating state when components mount
             productList: data.allProducts
         })        
     });
   }
 
+  // Handle add product method called from admin dashboard
   handleAddProduct = (product) => {
     const copyProducts = [...this.state.productList.products]
     copyProducts.unshift(product)
@@ -67,31 +67,32 @@ class App extends Component {
     })
   }
 
+  // When app cpmponent mounts, run get products method
   componentDidMount() {
       this.getProducts();
   }
   
   render() {
-  return (
-  <>
-    <Nav />
-    <Routes>
-      <Route path="/" element={<Home/>} />
-      <Route path="/store" element={<Store
-        productList={this.state.productList}
-      />} />
-      <Route path="/store/:id" element={<Product
-        productList={this.state.productList}
-      />} />
-      <Route path="/contact" element={<Contact/>} />
-      <Route path="/admin" element={<AdminLogin />} />
-      <Route path="/admin/dashboard" element={<AdminDashboard
-        productList={this.state.productList}
-        admin={this.state.admin}
-      />} />
-    </Routes>
-  </>
-  );
+    return (
+      <>
+        <Nav />
+        <Routes>
+          <Route path="/" element={<Home/>} />
+          <Route path="/store" element={<Store
+            productList={this.state.productList}
+          />} />
+          <Route path="/store/:id" element={<Product
+            productList={this.state.productList}
+          />} />
+          <Route path="/contact" element={<Contact/>} />
+          <Route path="/admin" element={<AdminLogin />} />
+          <Route path="/admin/dashboard" element={<AdminDashboard
+            productList={this.state.productList}
+            admin={this.state.admin}
+          />} />
+        </Routes>
+      </>
+    )
   }
 }
 
