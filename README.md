@@ -47,15 +47,15 @@ I have created wireframes in Figma here:
 https://www.figma.com/file/MozQVZgOuLJcgDHr9d0K1h/Family-Gains-Website-Launch?node-id=0%3A1
 
 ## Data Relationships
-The front end is built with a series of components that have the following relationships and pass the following data:
-Index.js > App.js
-            App.js > Nav.js
-            App.js > Home.js
-            App.js (passes product list from state) > Store.js (passes each property of the product) > ProductPreview.js 
-            App.js (passes product list from state) > Product.js > backToStoreBtn.js 
-            App.js > Contact.js
-            App.js > AdminLogin.js
-            App.js > AdminDashboard.js (passes product list and admin info from state)
+The front end is built with a series of components that have the following relationships and pass the following data: <br />
+Index.js > App.js <br />
+            App.js > Nav.js <br />
+            App.js > Home.js <br />
+            App.js (passes product list from state) > Store.js (passes each property of the product) > ProductPreview.js <br />
+            App.js (passes product list from state) > Product.js > backToStoreBtn.js <br />
+            App.js > Contact.js <br />
+            App.js > AdminLogin.js <br />
+            App.js (passes product list and admin info from state) > AdminDashboard.js <br />
 
 ## Unsolved Problems
 I solved for all of the MVP problems, the admin login stretch goal, and continue work on the remaining stretch goals.
