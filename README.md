@@ -20,8 +20,8 @@ PORT=3001 <br />
 MONGODB_URI=mongodb+srv://admin:fIorGT2x0I5EZFlo@philscluster.6gpmpcs.mongodb.net/family-gains?retryWrites=true&w=majority <br />
 FRONTEND_URL=http://localhost:3000 <br />
 * Using your CLI, while still in the back end remote location. Enter the command npm i which will install the dependencies in the package.json. Then enter the command nodemon server.js to activate the server. You should see it appear in your browser at localhost:3001/products
-* CD into the back end repo location. Open the back end repo in your code editor from the CLI, for example code . if using VS code. You will need to add an .env file at the root level and in it put:
-REACT_APP_BACKEND_URL=http://localhost:3001/products
+* CD into the back end repo location. Open the back end repo in your code editor from the CLI, for example code . if using VS code. You will need to add an .env file at the root level and in it put: <br />
+REACT_APP_BACKEND_URL=http://localhost:3001/products <br />
 
 NOTE: There is also an admin username and password that should be added to the front end env if you will be doing create, update, or delete of products. That is not listed here for security purposes. Reach out to me please if you would like a demonstration of that.
 
