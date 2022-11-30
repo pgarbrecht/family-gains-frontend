@@ -1,6 +1,6 @@
 # Family Gains Business Website
 ## Project Description
-A fullstack MERN website create by Phil Garbrecht, for his small business Family Gains. Users can view different products, and the admin has full CRUD capabilities for the products once logged into the admin dashboard.
+A fullstack MERN website created by Phil Garbrecht, for his small business Family Gains. Users can view different products, and the admin has full CRUD capabilities for the products once logged into the admin dashboard.
 
 ## Project Links
 * Link to GitHub Repository (Backend): https://github.com/pgarbrecht/family-gains-backend
