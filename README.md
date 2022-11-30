@@ -15,10 +15,10 @@ A fullstack MERN website created by Phil Garbrecht, for his small business Famil
 If you will view the application locally (instead of the live deployed version), Please follow these steps to install and run it:
 
 * Fork, and then git clone both the front end git link and back end git link to  local remotes on your computer. You may find it helpful to create a root folder, then git clone each into it, for easy access / opening both in your code editor.
-* CD into the back end repo location. Open the back end repo in your code editor from the CLI, for example code . if using VS code. You will need to add an .env file at the root level and in it put:
-PORT=3001
-MONGODB_URI=mongodb+srv://admin:fIorGT2x0I5EZFlo@philscluster.6gpmpcs.mongodb.net/family-gains?retryWrites=true&w=majority
-FRONTEND_URL=http://localhost:3000
+* CD into the back end repo location. Open the back end repo in your code editor from the CLI, for example code . if using VS code. You will need to add an .env file at the root level and in it put: <br />
+PORT=3001 <br />
+MONGODB_URI=mongodb+srv://admin:fIorGT2x0I5EZFlo@philscluster.6gpmpcs.mongodb.net/family-gains?retryWrites=true&w=majority <br />
+FRONTEND_URL=http://localhost:3000 <br />
 * Using your CLI, while still in the back end remote location. Enter the command npm i which will install the dependencies in the package.json. Then enter the command nodemon server.js to activate the server. You should see it appear in your browser at localhost:3001/products
 * CD into the back end repo location. Open the back end repo in your code editor from the CLI, for example code . if using VS code. You will need to add an .env file at the root level and in it put:
 REACT_APP_BACKEND_URL=http://localhost:3001/products
