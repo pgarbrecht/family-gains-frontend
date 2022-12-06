@@ -3,10 +3,10 @@
 A fullstack MERN website created by Phil Garbrecht, for his small business Family Gains. Users can view different products, and the admin has full CRUD capabilities for the products once logged into the admin dashboard.
 
 ## Project Links
-* Link to GitHub Repository (Backend): https://github.com/pgarbrecht/family-gains-backend
-* Link to GitHub Repository (Frontend): https://github.com/pgarbrecht/family-gains-frontend
+* Link to Deployed Application (Frontend): https://family-gains.herokuapp.com
 * Link to Deployed Application (Backend): https://family-gains-backend.herokuapp.com/products
-* Link to Deployed Application (Frontend): https://family-gains.herokuapp.com/
+* Link to GitHub Repository (Frontend): https://github.com/pgarbrecht/family-gains-frontend
+* Link to GitHub Repository (Backend): https://github.com/pgarbrecht/family-gains-backend
 
 ## Technologies Used
 ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white) ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB) ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white) ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white) ![Heroku](https://img.shields.io/badge/heroku-%23430098.svg?style=for-the-badge&logo=heroku&logoColor=white)
