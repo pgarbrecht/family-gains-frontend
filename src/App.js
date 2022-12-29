@@ -15,7 +15,7 @@ import {
 } from "react-router-dom";
 
 // Define baseURL
-let baseURL = process.env.REACT_APP_BACKEND_URL
+let backendBaseURL = process.env.REACT_APP_BACKEND_URL
 
 // Note it is intentional to use class component here instead of function component + useState hook, because of issues with converting data from back end
 class App extends Component {
@@ -36,7 +36,7 @@ class App extends Component {
   // Getting products from the database and updating state
   getProducts = () => {
     var headers = {}
-    fetch(baseURL, {
+    fetch(backendBaseURL, {
         method : "GET",
         mode: 'cors',
         headers: headers

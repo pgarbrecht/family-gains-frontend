@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { Navigate, Link } from 'react-router-dom';
 import '../App.css';
 
+// base URL needed
+const frontendBaseURL = process.env.REACT_APP_FRONTEND_URL;
+
 const AdminLogin = (props) => {
     
     // use state hook to track what user inputs in admin sign in form
@@ -24,7 +27,7 @@ const AdminLogin = (props) => {
         //set our admin login info to local storage
         window.localStorage.setItem('adminPersistentInfo', JSON.stringify(adminInput));
         // redirect to admin dashboard, and if their login info was correct they will see it
-        window.location.href='https://family-gains.herokuapp.com/admin/dashboard'
+        window.location.href=`${frontendBaseURL}/admin/dashboard`
     }
 
     return (

@@ -3,8 +3,9 @@ import { Navigate } from 'react-router-dom';
 import Modal from "react-modal";
 import '../App.css';
 
-// backend url
-const baseURL = process.env.REACT_APP_BACKEND_URL;
+// base URLs needed
+const frontendBaseURL = process.env.REACT_APP_FRONTEND_URL;
+const backendBaseURL = process.env.REACT_APP_BACKEND_URL;
 
 //the approved admin info stored in secret env file
 const approvedAdminUsername = process.env.REACT_APP_ADMIN_USERNAME;
@@ -71,7 +72,7 @@ const AdminDashboard = (props) => {
     const handleAddSubmit = (e) => {
         console.log(productToAdd)
         e.preventDefault()
-        fetch(`${baseURL}/new`, {
+        fetch(`${backendBaseURL}/new`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -102,7 +103,7 @@ const AdminDashboard = (props) => {
                 price: '',
                 inStock: '',
             }) 
-            window.location.href=`https://family-gains.herokuapp.com/admin/dashboard`
+            window.location.href=`${frontendBaseURL}/admin/dashboard`
         })
         .catch(err => (console.log(err)))
     }
@@ -110,7 +111,7 @@ const AdminDashboard = (props) => {
     // Handle submit method for edited exercise
     const handleEditProduct = (e) => {
         e.preventDefault()
-        fetch(`${baseURL}/${productToEdit.id}`, {
+        fetch(`${backendBaseURL}/${productToEdit.id}`, {
             method: 'PUT',
             body: JSON.stringify({
                 name: productToEdit.name,
@@ -129,7 +130,7 @@ const AdminDashboard = (props) => {
             } throw new Error(res)
         })
         .then(resJson => {
-            window.location.href=`https://family-gains.herokuapp.com/admin/dashboard`;
+            window.location.href=`${frontendBaseURL}/admin/dashboard`;
         })
         .catch(err => (console.log(err))) 
     }
@@ -147,7 +148,7 @@ const AdminDashboard = (props) => {
 
     // Handle delete product method
     const handleDeleteProduct = (id) => {
-        fetch(`${baseURL}/${id}`, {
+        fetch(`${backendBaseURL}/${id}`, {
         method: 'DELETE'
         }).then( response => {
         const findIndex = props.productList.findIndex(product => product._id === id)
@@ -155,14 +156,14 @@ const AdminDashboard = (props) => {
         copyProductList.splice(findIndex, 1)
         props.setState({productList: copyProductList})
         console.log('got to bottom of handle delete');
-        }).then(window.location.href=`https://family-gains.herokuapp.com/admin/dashboard/`)
+        }).then(window.location.href=`${frontendBaseURL}/admin/dashboard`)
     }
 
     const signOut = () => {
         // delete the admin persistent info from local storage
         window.localStorage.removeItem('adminPersistentInfo');
         // redirect back to sign in page
-        window.location.href='https://family-gains.herokuapp.com/admin/'
+        window.location.href=`${frontendBaseURL}/admin`
     }
 
     // LOGIC TO ALLOW VIEWING ADMIN DASHBOARD OR NOT
