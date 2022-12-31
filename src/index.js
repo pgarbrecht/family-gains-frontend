@@ -3,14 +3,17 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import { BrowserRouter } from "react-router-dom";
+import HttpsRedirect from 'react-https-redirect';
 import reportWebVitals from './reportWebVitals';
 
-// Using react router to create browser URLs
+// Using react router to create browser URLs and HTTPS redirect to redirect to secure protocol
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-    <App />
+      <HttpsRedirect>
+        <App />
+      </HttpsRedirect>
     </BrowserRouter>
   </React.StrictMode>
 );
